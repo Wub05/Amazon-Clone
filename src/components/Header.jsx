@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import { imagesData } from "../constants/images";
 import { CiLocationOn } from "react-icons/ci";
 import { IoSearchOutline } from "react-icons/io5";
+import { DataContext } from "./dataProvider/DataProvider";
+import { useContext } from "react";
 
 const Header = () => {
+  const [{ cart }, dispatch] = useContext(DataContext);
+
   return (
     <header className="bg-header_bg text-white relative top-0 mt-0">
       <section
@@ -83,7 +87,9 @@ const Header = () => {
           </Link>
           {/* cart */}
           <Link to="/cart" className="mr-[-17px]">
-            <span>0</span>
+            <span className="bg-yellow-600 text-white px-1 rounded-sm text-bold">
+              {cart.length}
+            </span>
           </Link>
         </div>
       </section>
