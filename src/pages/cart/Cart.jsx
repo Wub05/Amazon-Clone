@@ -4,42 +4,89 @@ import { DataContext } from "../../components/dataProvider/DataProvider";
 import ProductCard from "../../components/product/ProductCard";
 import CurrencyFormat from "../../components/CurrencyFormat";
 import { Link } from "react-router-dom";
+import { Type } from "../../utility/action_type";
+import { PiShoppingCartSimpleDuotone } from "react-icons/pi";
+
+import { HiOutlineChevronUp } from "react-icons/hi";
+import { HiOutlineChevronDown } from "react-icons/hi2";
 
 const Cart = () => {
   // {cart,user}=state
   const [{ cart, user }, dispatch] = useContext(DataContext);
 
-  //total price
-  const total_price = cart?.reduce((amount, item) => {
-    return amount + item.price;
+  //Total price
+  const total_price = cart?.reduce((prev_amount, item) => {
+    return prev_amount + item.amount * item.price;
   }, 0);
+  //Total_items
+  const total_items = cart?.reduce((amount, item) => amount + item.amount, 0);
+
+  //Increment Handler
+  const Increment = (item) => {
+    dispatch({
+      type: Type.ADD_TO_CART,
+      item,
+    });
+  };
+
+  //Decrement Handler
+  const Decrement = (id) => {
+    dispatch({
+      type: Type.REMOVE_FROM_CART,
+      id,
+    });
+  };
+
   return (
     <Layout>
       <div className="relative flex gap-6">
         <div className="p-8 mx-auto">
           <div className="mb-7 pl-[15%]  text-xl leading-[2rem] w-full">
             <h2 className=" text-md">Hello,</h2>
-            <h3 className="text-2xl font-bold text-nowrap min-w-[40%]">
-              <span className="text-[#e0ab1aa8]">Welcome to </span>
-              <span>your Shopping Cart</span>
+            <h3 className="text-2xl font-bold text-nowrap min-w-[40%] ">
+              <span className="text-[#e0ab1aa8]">Welcome </span>
+              <span>to your Shopping Cart</span>
             </h3>
           </div>
           <hr className="mt-[0.75rem] pb-[2%] mb-4" />
 
           {cart?.length === 0 ? (
-            <h2 className="text-2xl  outline-red-700 rounded-md mx-auto border-red-500">
-              Add something to your Shopping Cart
+            <h2 className="text-5xl mx-auto ">
+              Drop something and <span className="text-yellow-600">Enjoy!</span>
+              <span>
+                <span className="text-5xl"> 😂</span>
+                <PiShoppingCartSimpleDuotone size={350} />
+              </span>
             </h2>
           ) : (
-            cart?.map((item) => (
-              <ProductCard
-                key={item.id}
-                data={item}
-                _flex={true}
-                addDesc={true}
-                showButton={false}
-              />
-            ))
+            cart?.map((item) => {
+              return (
+                <section className="flex gap-5">
+                  <ProductCard
+                    key={item.id}
+                    data={item}
+                    _flex={true}
+                    addDesc={true}
+                    showButton={false}
+                  />
+                  <div className="flex flex-col text-nowrap p-5 my-auto mx-auto border-[1px] border-red-700 rounded-md">
+                    <button
+                      onClick={() => Increment(item)}
+                      className="hover:bg-yellow-500 mb-2"
+                    >
+                      <HiOutlineChevronUp />
+                    </button>
+                    <span className="mx-auto">{item.amount}</span>
+                    <button
+                      onClick={() => Decrement(item.id)}
+                      className="hover:bg-yellow-500 mt-2"
+                    >
+                      <HiOutlineChevronDown />
+                    </button>
+                  </div>
+                </section>
+              );
+            })
           )}
         </div>
         {cart?.length !== 0 && (
@@ -48,7 +95,7 @@ const Cart = () => {
               <p className="min-w-[30%] border-b-2 pl-1 mx-auto font-semibold text-[#292727ba] mb-[2px]">
                 Subtotal: [{" "}
                 <span className="text-md bg-[#dac33096] font-bold px-2 rounded-md">
-                  {cart.length}
+                  {total_items}
                 </span>{" "}
                 ] items
               </p>

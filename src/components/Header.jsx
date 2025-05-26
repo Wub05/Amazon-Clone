@@ -4,14 +4,20 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoSearchOutline } from "react-icons/io5";
 import { DataContext } from "./dataProvider/DataProvider";
 import { useContext } from "react";
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
+import { HiOutlineChevronDown } from "react-icons/hi2";
 
 const Header = () => {
+  //useContext
   const [{ cart }, dispatch] = useContext(DataContext);
 
+  // Total items
+  const total_items = cart?.reduce((amount, item) => amount + item.amount, 0);
+
   return (
-    <header className="bg-header_bg text-white relative top-0 mt-0">
+    <header className="static bg-header_bg text-white top-0 z-50 ">
       <section
-        className="relative flex justify-around items-center gap-1 mt-2 py-6 h-[3.5rem] 
+        className="relative flex justify-around items-center gap-1 py-6 h-[3.5rem] 
       "
       >
         <div className="flex items-center gap-1 left-0 ml-[-5.5rem] mr-[6rem] ">
@@ -27,7 +33,7 @@ const Header = () => {
           <span>
             <CiLocationOn
               size={20}
-              className="font-bold mr-[-0.3rem] mb-[-0.3rem]"
+              className="font-bold mr-[-0.2rem] mb-[-0.3rem]"
             />
           </span>
           <div className="leading-[1.9rem]">
@@ -36,7 +42,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex items-center w-[50%] ml-[-15rem] mr-[-5rem] active:outline-[#FF9900] ">
+        <div className="flex items-center w-[48%] ml-[-15rem] mr-[-7.5rem] active:outline-[#FF9900] ">
           {/* search */}
 
           <select className="text-black bg-[#D4D4D4] py-[0.45rem] pl-[0.7rem] pr-[0.1rem] mr-[-0.1rem] text-lg rounded-l-md max-w-14 cursor-pointer ">
@@ -58,37 +64,49 @@ const Header = () => {
         </div>
 
         {/* right side sections */}
-        <div className="flex justify-between w-[23%] ml-[-2rem] mr-[-3rem] px-5 my-3">
-          <div className="flex gap-1 items-center mt-2 h-[33px] ml-[-45px] mr-[2.5rem]  ">
+        <div className="flex justify-evenly min-w-[15%]  mr-[-4rem] px-5 my-3  h-auto">
+          <div className="flex items-center mt-2 h-[33px] ml-[-49px] p-1 mr-[0.5rem] object-contain hover:border-[1px] border-[#ede5e487] rounded-md">
             <img
               src={imagesData.USA_flag}
               alt="usa flag"
-              width={20}
-              height={20}
-              className="object-contain"
+              width={27}
+              height={30}
             />
-            <select name="" id="" className="text-md bg-black">
+            <select name="" id="" className="text-sm bg-black">
               <option value="">EN</option>
             </select>
           </div>
 
           {/* the 3 right edge items */}
 
-          <Link to="/auth" className="leading-3 mt-2 pr-[2.5rem]">
+          <Link
+            to="/auth"
+            className="leading-3 mt-2 px-[1rem] hover:border-[1px] border-[#ede5e487] rounded-md text-nowrap"
+          >
             <p className="text-sm px-2 mx-2 ">Sign In</p>
             <span className="text-md font-bold mx-[-10px] text-nowrap ">
               Account & Lists
             </span>
           </Link>
           {/* orders */}
-          <Link to="/orders" className="mr-[23px] mt-2 px-2 leading-[0.9]">
+          <Link
+            to="/orders"
+            className="mr-[15px] mt-2 px-1 leading-[0.9] mx-auto hover:border-[1px] border-[#ede5e487] rounded-md"
+          >
             <p className="text-sm pl-2">Returns</p>
             <span className="text-md font-bold mx-2">&Orders</span>
           </Link>
           {/* cart */}
-          <Link to="/cart" className="mr-[-17px]">
-            <span className="bg-yellow-600 text-white px-1 rounded-sm text-bold">
-              {cart.length}
+          <Link
+            to="/cart"
+            className=" flex flex-col content-end ml-[-5px] px-1 
+            leading-[1px] border-[2px] border-[#ede5e487] rounded-md"
+          >
+            <span className="ml-[10px] mt-4 pb-[2px] text-yellow-500 font-bold text-md rounded-sm text-bold">
+              {total_items}
+            </span>
+            <span className="my-auto object-contain">
+              <PiShoppingCartSimpleBold size={25} />
             </span>
           </Link>
         </div>

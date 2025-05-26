@@ -32,8 +32,7 @@ const ProductCard = ({ data, _flex, addDesc, showButton }) => {
         _flex
           ? "relative flex gap-[50px] h-auto px-[1%]   "
           : "p-3 shadow-md shadow-[#47444437] rounded-sm transform hover:scale-95 transition duration-300 px-5"
-      } 
-      
+      }    
 `}
     >
       <Link to={`/products/${id}`}>
@@ -47,8 +46,8 @@ const ProductCard = ({ data, _flex, addDesc, showButton }) => {
       </Link>
 
       <div
-        className={`w-[50%] h-auto ${
-          _flex ? "flex my-[1%] text-md  gap-1 flex-col" : ""
+        className={` h-auto ${
+          _flex ? "flex my-[1%] text-md w-[50%] gap-1 flex-col" : "w-full"
         } `}
       >
         <h3 className={`${_flex ? "text-lg font-bold" : ""}`}>{title}</h3>
