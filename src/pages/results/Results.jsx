@@ -41,7 +41,12 @@ const Results = () => {
           </h1>
           <div className="relative text-black  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-[80px] mx-7">
             {productCat?.map((product) => (
-              <ProductCard key={product.id} data={product} />
+              <ProductCard
+                key={product.id}
+                data={product}
+                _flex={false}
+                showButton={true}
+              />
             ))}
           </div>
         </section>

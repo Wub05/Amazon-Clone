@@ -41,6 +41,7 @@ const ProductDetail = () => {
             data={eachProduct}
             _flex={true}
             addDesc={true}
+            showButton={true}
           />
         </div>
       )}
