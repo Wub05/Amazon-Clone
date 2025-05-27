@@ -6,6 +6,7 @@ import { DataContext } from "./dataProvider/DataProvider";
 import { useContext } from "react";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { HiOutlineChevronDown } from "react-icons/hi2";
+import LowerHeader from "./LowerHeader";
 
 const Header = () => {
   //useContext
@@ -17,7 +18,7 @@ const Header = () => {
   return (
     <header className="sticky bg-header_bg text-white top-0 z-50 ">
       <section className="relative flex justify-around items-center gap-1 py-6 h-[3.5rem] ">
-        <div className="flex items-center gap-1 left-0 ml-[-5.5rem] mr-[6rem] ">
+        <div className="flex items-center gap-1 left-0 ml-[-5.5rem] mr-[6rem]  ">
           {/* logo */}
           <Link to="/">
             <img
@@ -42,13 +43,12 @@ const Header = () => {
         <div className="flex items-center w-[48%] ml-[-15rem] mr-[-7.5rem] focus-within:outline focus-within:outline-3 rounded-md focus-within:outline-[#e36e33]">
           {/* search */}
 
-          <select className="text-black bg-[#D4D4D4] py-[0.45rem] pl-[0.7rem] pr-[0.1rem] mr-[-0.1rem] text-lg rounded-l-md max-w-14 cursor-pointer ">
+          <select className="text-black bg-[#D4D4D4] py-[0.51rem] pl-[0.7rem] pr-[0.1rem] mr-[-0.1rem] text-lg rounded-l-md max-w-14 cursor-pointer ">
             <option value="" defaultValue="All">
               All
             </option>
             <option value="">All in all</option>
           </select>
-
           <input
             type="text"
             name=""
@@ -88,7 +88,7 @@ const Header = () => {
           {/* orders */}
           <Link
             to="/orders"
-            className="mr-[15px] mt-2 px-1 leading-[0.9] mx-auto hover:border-[1px] border-[#ede5e487] rounded-md"
+            className="mr-[10px] mt-2 px-1 leading-[0.9] mx-auto hover:border-[1px] border-[#ede5e487] rounded-md"
           >
             <p className="text-sm pl-2">Returns</p>
             <span className="text-md font-bold mx-2">&Orders</span>
@@ -108,6 +108,7 @@ const Header = () => {
           </Link>
         </div>
       </section>
+      <LowerHeader />
     </header>
   );
 };

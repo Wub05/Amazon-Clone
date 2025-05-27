@@ -6,6 +6,9 @@ export default {
       colors: {
         header_bg: "#131921",
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"], // now Tailwind understands font-inter
+      },
     },
   },
   plugins: [],
