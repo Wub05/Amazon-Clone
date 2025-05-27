@@ -15,11 +15,8 @@ const Header = () => {
   const total_items = cart?.reduce((amount, item) => amount + item.amount, 0);
 
   return (
-    <header className="static bg-header_bg text-white top-0 z-50 ">
-      <section
-        className="relative flex justify-around items-center gap-1 py-6 h-[3.5rem] 
-      "
-      >
+    <header className="sticky bg-header_bg text-white top-0 z-50 ">
+      <section className="relative flex justify-around items-center gap-1 py-6 h-[3.5rem] ">
         <div className="flex items-center gap-1 left-0 ml-[-5.5rem] mr-[6rem] ">
           {/* logo */}
           <Link to="/">
@@ -42,7 +39,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex items-center w-[48%] ml-[-15rem] mr-[-7.5rem] active:outline-[#FF9900] ">
+        <div className="flex items-center w-[48%] ml-[-15rem] mr-[-7.5rem] focus-within:outline focus-within:outline-3 rounded-md focus-within:outline-[#e36e33]">
           {/* search */}
 
           <select className="text-black bg-[#D4D4D4] py-[0.45rem] pl-[0.7rem] pr-[0.1rem] mr-[-0.1rem] text-lg rounded-l-md max-w-14 cursor-pointer ">
@@ -57,10 +54,10 @@ const Header = () => {
             name=""
             id=""
             placeholder="search product"
-            className="p-2 w-full text-black focus:outline-[#FF9900]"
+            className="p-2 w-full text-black outline-none"
           />
           {/* icon */}
-          <IoSearchOutline className=" bg-[#F3A847] hover:bg-[#ca872f] w-[4rem] h-[2.5rem] rounded-r-md" />
+          <IoSearchOutline className=" bg-[#F3A847] outline-2 outline-[#ca872f] w-[4rem] h-[2.5rem] rounded-r-md" />
         </div>
 
         {/* right side sections */}

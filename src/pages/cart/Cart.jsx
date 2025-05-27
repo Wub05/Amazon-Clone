@@ -52,7 +52,7 @@ const Cart = () => {
 
           {cart?.length === 0 ? (
             <h2 className="text-5xl mx-auto ">
-              Drop something and <span className="text-yellow-600">Enjoy!</span>
+              Drop something and <span className="text-[#e36e33]">Enjoy!</span>
               <span>
                 <span className="text-5xl"> 😂</span>
                 <PiShoppingCartSimpleDuotone size={350} />
@@ -61,7 +61,7 @@ const Cart = () => {
           ) : (
             cart?.map((item) => {
               return (
-                <section className="flex gap-5">
+                <section className=" relative flex gap-5">
                   <ProductCard
                     key={item.id}
                     data={item}
@@ -69,7 +69,8 @@ const Cart = () => {
                     addDesc={true}
                     showButton={false}
                   />
-                  <div className="flex flex-col text-nowrap p-5 my-auto mx-auto border-[1px] border-red-700 rounded-md">
+
+                  <div className="flex flex-col text-nowrap p-5 my-auto mx-auto border-[1px] border-[#e36e33] rounded-md">
                     <button
                       onClick={() => Increment(item)}
                       className="hover:bg-yellow-500 mb-2"
