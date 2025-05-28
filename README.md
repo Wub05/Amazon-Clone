@@ -7,7 +7,7 @@
    - JavaScript
    - Tailwind css
    - React Icons
-   - Fake API Store
+   - Fake Store API
      
 #Tools
    - Visual Studio Code
