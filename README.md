@@ -6,11 +6,11 @@
    - React-Vite
    - JavaScript
    - Tailwind css
-   - Material UI
    - React Icons
-   - 
+   - Fake API Store
+     
 #Tools
    - Visual Studio Code
-   - 
+     
 #Project Owner:
   - Evangadi Tech
