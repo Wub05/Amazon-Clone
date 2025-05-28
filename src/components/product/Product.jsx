@@ -19,7 +19,7 @@ const Product = () => {
     })();
   }, []);
   return (
-    <div className="relative text-black  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 mt-11 mx-7">
+    <div className="relative mx-10 text-black  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 mt-11 ">
       {product?.map((item) => (
         <ProductCard
           key={item.id}

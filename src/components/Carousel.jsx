@@ -15,6 +15,9 @@ const Carousel_comp = () => {
           <img key={index} src={img} alt="carousel image" />
         ))}
       </Carousel>
+
+      {/* fading div */}
+      <div className="h-[7vh] bg-[#201e200d] bg-opacity-90" />
     </div>
   );
 };
