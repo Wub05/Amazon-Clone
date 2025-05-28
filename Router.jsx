@@ -6,9 +6,10 @@ import Cart from "./src/pages/cart/Cart";
 import Orders from "./src/pages/orders/Orders";
 import Results from "./src/pages/results/Results";
 import ProductDetail from "./src/pages/productDetail/ProductDetail";
+import { HashRouter } from "react-router";
 const PageRouter = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/auth" element={<Signup />} />
@@ -19,7 +20,7 @@ const PageRouter = () => {
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="*" element="404" /> {/*//404 page*/}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
