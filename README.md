@@ -1,5 +1,6 @@
 #Project Name: 
     - Amazon Clone (Frontend)
+
 #Tech Stack used:
    - React-Vite
    - JavaScript
