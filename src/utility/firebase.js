@@ -3,9 +3,11 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+const API_KEY = import.meta.env.VITE_API_KEY; //api key imported
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAuq8FSZ5friO8FxwVpDukL9wo3NBAahLw",
+  apiKey: API_KEY,
   authDomain: "clone-43875.firebaseapp.com",
   projectId: "clone-43875",
   storageBucket: "clone-43875.firebasestorage.app",
