@@ -2,6 +2,7 @@ import { Type } from "./action_type";
 
 export const initialState = {
   cart: [],
+  user: null,
 };
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -11,7 +12,7 @@ export const reducer = (state, action) => {
         (item) => item.id === action.item.id
       );
 
-      //if not exit
+      //if not exist
       if (!existingItem) {
         return {
           ...state,
@@ -51,6 +52,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cart: newCart,
+      };
+    case Type.ADD_USER:
+      return {
+        ...state,
+        user: action.user,
       };
 
     default:

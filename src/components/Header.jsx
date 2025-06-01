@@ -5,14 +5,14 @@ import { IoSearchOutline } from "react-icons/io5";
 import { DataContext } from "./dataProvider/DataProvider";
 import { useContext } from "react";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
-import { HiOutlineChevronDown } from "react-icons/hi2";
 import LowerHeader from "./LowerHeader";
+import { auth } from "../utility/firebase";
 
 const Header = () => {
   //useContext
-  const [{ cart }, dispatch] = useContext(DataContext);
+  const [{ cart, user }, dispatch] = useContext(DataContext);
 
-  // Total items
+  // Total cart items
   const total_items = cart?.reduce((amount, item) => amount + item.amount, 0);
 
   return (
@@ -80,10 +80,26 @@ const Header = () => {
             to="/auth"
             className="leading-3 mt-2 px-[1rem] hover:border-[1px] border-[#ede5e487] rounded-md text-nowrap"
           >
-            <p className="text-sm px-2 mx-2 ">Sign In</p>
-            <span className="text-md font-bold mx-[-10px] text-nowrap ">
-              Account & Lists
-            </span>
+            {" "}
+            {user ? (
+              <>
+                <p className="text-sm px-2 mx-2 ">
+                  <span className="text-yellow-700 mb-1">
+                    Hello, {user?.email?.split("@")[0]} {/*split the string  */}
+                  </span>
+                </p>
+                <span className="text-md font-bold mx-2 text-nowrap hover:text-red-800 ">
+                  Sign Out
+                </span>
+              </>
+            ) : (
+              <>
+                <p className="text-sm px-2 mx-2 ">Sign In</p>
+                <span className="text-md font-bold mx-[-10px] text-nowrap ">
+                  Account & Lists
+                </span>
+              </>
+            )}
           </Link>
           {/* orders */}
           <Link
