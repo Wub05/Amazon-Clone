@@ -42,6 +42,9 @@
   "firebase": "^11.8.1",
   
     
+  "firebase-tools": "^14.5.1",
+  
+    
   "numeral": "^2.0.6",
   
     
