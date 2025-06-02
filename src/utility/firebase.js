@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const API_KEY = import.meta.env.VITE_API_KEY; //api key imported
-
+console.log(API_KEY);
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: API_KEY,

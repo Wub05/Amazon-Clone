@@ -88,7 +88,10 @@ const Header = () => {
                     Hello, {user?.email?.split("@")[0]} {/*split the string  */}
                   </span>
                 </p>
-                <span className="text-md font-bold mx-2 text-nowrap hover:text-red-800 ">
+                <span
+                  className="text-md font-bold mx-2 text-nowrap hover:text-red-800 "
+                  onClick={() => auth.signOut()}
+                >
                   Sign Out
                 </span>
               </>
