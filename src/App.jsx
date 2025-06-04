@@ -7,6 +7,7 @@ import { Type } from "./utility/action_type";
 const App = () => {
   const [{ user }, dispatch] = useContext(DataContext);
   useEffect(() => {
+    //global state
     //Firebase method that listens for changes in the user's authentication state.
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {

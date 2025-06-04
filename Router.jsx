@@ -7,13 +7,28 @@ import Orders from "./src/pages/orders/Orders";
 import Results from "./src/pages/results/Results";
 import ProductDetail from "./src/pages/productDetail/ProductDetail";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+//could be called outside the function, to avoid repeated rerender
+const stripePromise = loadStripe(
+  "pk_test_51RVUW4Q6qdyTnErFnZQgD05Rhy8FAOMDvTkqeERZbaqczT1zIR5Q3CptAZBwfIfGCiiWpTUP1AQ0VGvARUoXW9ci001L0autJr"
+);
+
 const PageRouter = () => {
   return (
     <HashRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/payments" element={<Payment />} />
+        <Route
+          path="/payments"
+          element={
+            <Elements stripe={stripePromise}>
+              <Payment />
+            </Elements>
+          }
+        />
         <Route path="/cart" element={<Cart />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/category/:categoryName" element={<Results />} />

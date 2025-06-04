@@ -59,11 +59,10 @@ const Cart = () => {
               </span>
             </h2>
           ) : (
-            cart?.map((item) => {
+            cart?.map((item, index) => {
               return (
-                <section className=" relative flex gap-5">
+                <section className=" relative flex gap-5" key={index}>
                   <ProductCard
-                    key={item.id}
                     data={item}
                     _flex={true}
                     addDesc={true}

@@ -36,7 +36,22 @@
   "@mui/material": "^7.1.0",
   
     
+  "@stripe/react-stripe-js": "^3.7.0",
+  
+    
+  "@stripe/stripe-js": "^7.3.1",
+  
+    
   "axios": "^1.9.0",
+  
+    
+  "cors": "^2.8.5",
+  
+    
+  "dotenv": "^16.5.0",
+  
+    
+  "express": "^5.1.0",
   
     
   "firebase": "^11.8.1",
@@ -63,7 +78,10 @@
   "react-router-dom": "^7.6.0",
   
     
-  "react-spinners": "^0.17.0"
+  "react-spinners": "^0.17.0",
+  
+    
+  "stripe": "^18.2.0"
   
   },
   
