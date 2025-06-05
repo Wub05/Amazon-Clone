@@ -7,6 +7,8 @@ import { axiosInstance } from "../../api/axios";
 import { ClipLoader } from "react-spinners";
 import { db } from "../../utility/firebase";
 import { useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore"; //in modern firestore versions
+import { Type } from "../../utility/action_type";
 
 const payment = () => {
   const [{ user, cart }, dispatch] = useContext(DataContext); //context
@@ -55,16 +57,29 @@ const payment = () => {
       });
 
       //3. storing to the firebase database(firestore) and clear the Cart!
-      await db
-        .collection("users")
-        .doc(user.uid)
-        .collection("orders")
-        .doc(paymentIntent.id)
-        .set({
+
+      try {
+        // await db
+        //   .collection("users")
+        //   .doc(user.uid)
+        //   .collection("orders")
+        //   .doc(paymentIntent.id)
+        //   .set({
+        //     cart: cart,
+        //     amount: paymentIntent.amount,
+        //     created: payment.created,
+        //   });
+        await setDoc(doc(db, "users", user.uid, "orders", paymentIntent.id), {
           cart: cart,
-          amount: paymentIntent.amount,
-          created: payment.created,
+          amount: parseFloat(paymentIntent.amount) / 100,
+          created: paymentIntent.created,
         });
+        console.log("Order stored!");
+        //clear the cart after the successful payment!
+        dispatch({ type: Type.EMPTY_CART });
+      } catch (error) {
+        console.error("Failed to write to Firestore:", error);
+      }
     } catch (error) {
       console.log("failed to fetch!");
     }

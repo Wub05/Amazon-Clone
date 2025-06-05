@@ -58,6 +58,11 @@ export const reducer = (state, action) => {
         ...state,
         user: action.user,
       };
+    case Type.EMPTY_CART:
+      return {
+        ...state,
+        cart: [],
+      };
 
     default:
       return state;

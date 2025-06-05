@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { DataContext } from "../../components/dataProvider/DataProvider";
 import { ClipLoader } from "react-spinners";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +18,8 @@ const Auth = () => {
 
   const [{ user }, dispatch] = useContext(DataContext); //context
   const navigate = useNavigate(); //used to nagivate to different route
+  const navStateData = useLocation(); //used to access navigate "state Datas"
+  console.log(navStateData);
 
   //Auth Handler function
   const authHandler = async (e) => {
@@ -35,7 +37,7 @@ const Auth = () => {
             setError("");
             console.log(`You logged in as: ${email}`);
             setLoading({ ...loading, signIn: false }); //stop loading - after work done
-            navigate("/"); //navigate to the homepage.
+            navigate(navStateData?.state?.redirect || "/"); //navigate to the homepage (or redirect to protected Route).
           })
           .catch((error) => {
             setError(error.message);
@@ -69,13 +71,20 @@ const Auth = () => {
     <section>
       <div className="w-[20%] mx-auto">
         <div className="w-[170px] m">
-          <img
-            src={imagesData.Amazon_payment_logo}
-            className="object-contain"
-          />
+          <Link to="/">
+            <img
+              src={imagesData.Amazon_payment_logo}
+              className="object-contain"
+            />
+          </Link>
         </div>
         <div className="p-5 my-2 outline outline-2 outline-[#7b767b78] rounded-md ">
           <h1 className="mb-3 text-3xl">Sign In</h1>
+          {navStateData.state?.msg && (
+            <small className="text-red-700 p-1 font-bold">
+              {navStateData.state.msg}
+            </small>
+          )}
           <form action="" method="">
             <label htmlFor="email">E-mail</label>
             <br />
