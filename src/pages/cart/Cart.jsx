@@ -55,7 +55,7 @@ const Cart = () => {
               Drop something and <span className="text-[#e36e33]">Enjoy!</span>
               <span>
                 <span className="text-5xl"> 😂</span>
-                <PiShoppingCartSimpleDuotone size={350} />
+                <PiShoppingCartSimpleDuotone size={330} />
               </span>
             </h2>
           ) : (
